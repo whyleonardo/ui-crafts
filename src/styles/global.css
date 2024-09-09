@@ -151,4 +151,16 @@
 
     --ring: 0 0% 93.33%;
   }
+
+  #tab-filter + #tab-filter {
+    @apply ml-2;
+  }
+
+  #tab-filter[data-selected="true"] {
+    @apply z-[1] border border-neutral-300 bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800;
+  }
+
+  #tab-filter[data-selected="true"] + #tab-filter[data-selected="true"] {
+    @apply z-0 ml-[-16px] rounded-l-none border-l-0 border-neutral-300 bg-neutral-300 pl-7 dark:border-neutral-600 dark:bg-neutral-700;
+  }
 }

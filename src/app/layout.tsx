@@ -34,7 +34,14 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={cn("min-h-screen", fontSans, fontMono, fontCalSans)}>
+      <body
+        className={cn(
+          "container min-h-screen",
+          fontSans,
+          fontMono,
+          fontCalSans
+        )}
+      >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
