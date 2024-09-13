@@ -13,9 +13,9 @@ export default function IndexPage() {
       </header>
 
       <main className="flex w-full flex-col items-center gap-8 text-xl">
-        <MagneticTabs />
-
         <DraggableWidget />
+        
+        <MagneticTabs />
       </main>
     </div>
   )
