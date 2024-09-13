@@ -36,7 +36,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <head />
       <body
         className={cn(
-          "container min-h-screen",
+          "container min-h-screen overflow-x-hidden px-4",
           fontSans,
           fontMono,
           fontCalSans

@@ -31,6 +31,10 @@
   }
 }
 
+mark {
+  @apply bg-indigo-100 text-indigo-950;
+}
+
 ::-moz-selection {
   /* Code for Firefox */
   color: hsl(var(--accent-foreground));
@@ -157,10 +161,10 @@
   }
 
   #tab-filter[data-selected="true"] {
-    @apply z-[1] border border-neutral-400/40 bg-neutral-200 dark:border-neutral-700 dark:bg-neutral-800;
+    @apply z-[1] border border-neutral-400/15 bg-neutral-300 dark:border-neutral-700/25 dark:bg-neutral-800;
   }
 
   #tab-filter[data-selected="true"] + #tab-filter[data-selected="true"] {
-    @apply z-0 ml-[-16px] rounded-l-none border-l-0 border-neutral-400/40 bg-neutral-300 pl-7 dark:border-neutral-600 dark:bg-neutral-700;
+    @apply z-0 ml-[-16px] rounded-l-none border-l-0 border-neutral-400/15 bg-neutral-200 pl-7 pr-4 dark:border-neutral-500/15 dark:bg-neutral-700;
   }
 }
