@@ -6,8 +6,8 @@ import { Button } from "@/components/ui/button"
 
 import { useClickOutside } from "@/hooks/use-click-outside"
 
-import { MotionConfig, type Transition, motion } from "framer-motion"
 import { ArrowLeft, Search } from "lucide-react"
+import { MotionConfig, type Transition, motion } from "motion/react"
 
 const transition = {
   type: "spring",
