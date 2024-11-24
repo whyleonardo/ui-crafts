@@ -37,7 +37,7 @@ export const ToolbarDynamic = ({
   return (
     <MotionConfig transition={transition}>
       <div ref={containerRef}>
-        <div className="bg-muted size-full rounded-xl border">
+        <div className="bg-background size-full rounded-xl border">
           <motion.div
             animate={{
               width: isOpen ? "16rem" : "44px"
