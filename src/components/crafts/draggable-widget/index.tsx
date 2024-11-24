@@ -5,7 +5,7 @@ import { type ChangeEvent, useCallback, useMemo, useRef, useState } from "react"
 import { ComponentContainer } from "@/components/component-container"
 import { ToolbarDynamic } from "@/components/ui/motion/toolbar-dynamic"
 
-import { motion } from "framer-motion"
+import { motion } from "motion/react"
 
 const textContent =
   "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris gravida id dolor vel sagittis. Nullam sed odio non turpis facilisis laoreet. Sed interdum sem cursus diam blandit, eget cursus sem facilisis. Nullam vitae cursus odio, ac lacinia tortor."
@@ -61,7 +61,7 @@ export const DraggableWidget = () => {
       </motion.div>
 
       <p
-        className="max-w-lg text-center text-base leading-6 text-muted-foreground"
+        className="text-muted-foreground max-w-lg text-center text-base leading-6"
         dangerouslySetInnerHTML={{ __html: highlightedText }}
       />
     </ComponentContainer>

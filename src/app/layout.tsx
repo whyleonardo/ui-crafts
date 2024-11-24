@@ -8,7 +8,7 @@ import { siteConfig } from "@/config/config"
 import { cn } from "@/lib/utils"
 
 import { fontCalSans, fontMono, fontSans } from "@/styles/fonts"
-import "@/styles/global.css"
+import "@/styles/styles.css"
 
 import { ThemeProvider } from "@/providers/theme-provider"
 

@@ -25,7 +25,8 @@ const buttonVariants = cva(
         ringHover:
           "bg-primary hover:bg-primary/90 transition-all text-primary-foreground hover:ring-2 hover:ring-offset-2 hover:ring-offset-background hover:ring-primary duration-300",
         linkHover:
-          "relative after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-7/12 after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300"
+          "relative after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-7/12 after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300",
+        unset: "cursor-pointer"
       },
       size: {
         default: "h-9 px-4 py-2",
