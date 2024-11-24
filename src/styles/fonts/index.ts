@@ -9,5 +9,5 @@ const calSans = localFont({
 })
 
 export const fontCalSans = calSans.variable
-export const fontSans = GeistSans.variable
-export const fontMono = GeistMono.variable
+export const fontSans = GeistSans.className
+export const fontMono = GeistMono.className

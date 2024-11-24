@@ -1,6 +1,8 @@
 "use client"
 
-import { type ChangeEvent, type ReactNode, useRef, useState } from "react"
+import { type ChangeEvent, useRef, useState } from "react"
+
+import { Button } from "@/components/ui/button"
 
 import { useClickOutside } from "@/hooks/use-click-outside"
 
@@ -12,30 +14,6 @@ const transition = {
   bounce: 0.2,
   duration: 0.4
 } as Transition
-
-const Button = ({
-  children,
-  onClick,
-  disabled,
-  ariaLabel
-}: {
-  children: ReactNode
-  onClick?: () => void
-  disabled?: boolean
-  ariaLabel?: string
-}) => {
-  return (
-    <button
-      className="relative flex h-9 w-9 shrink-0 scale-100 select-none appearance-none items-center justify-center rounded-lg text-neutral-500 transition-colors hover:bg-neutral-100 hover:text-neutral-800 focus-visible:ring-2 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50"
-      type="button"
-      onClick={onClick}
-      disabled={disabled}
-      aria-label={ariaLabel}
-    >
-      {children}
-    </button>
-  )
-}
 
 interface ToolbarDynamicProps {
   onChange: (event: ChangeEvent<HTMLInputElement>) => void
@@ -59,10 +37,9 @@ export const ToolbarDynamic = ({
   return (
     <MotionConfig transition={transition}>
       <div ref={containerRef}>
-        <div className="w- h-full w-full rounded-xl border border-neutral-950/10 bg-white">
+        <div className="bg-muted size-full rounded-xl border">
           <motion.div
             animate={{
-              // @todo: here I want to remove the width
               width: isOpen ? "16rem" : "44px"
             }}
             initial={false}
@@ -71,23 +48,32 @@ export const ToolbarDynamic = ({
               {!isOpen ? (
                 <div className="flex">
                   <Button
+                    variant="unset"
+                    className="group min-h-9 w-full min-w-9 focus-visible:ring-0"
+                    size="icon"
                     onClick={() => setIsOpen(true)}
-                    ariaLabel="Search text"
+                    aria-label="Search text"
                   >
-                    <Search className="h-5 w-5" />
+                    <Search className="text-muted-foreground size-5 transition group-hover:scale-110" />
                   </Button>
                 </div>
               ) : (
                 <motion.div className="flex space-x-2 overflow-hidden">
-                  <Button onClick={() => setIsOpen(false)} ariaLabel="Back">
-                    <ArrowLeft className="h-5 w-5" />
+                  <Button
+                    onClick={() => setIsOpen(false)}
+                    variant="unset"
+                    className="group min-h-9 min-w-9 focus-visible:ring-0"
+                    size="icon"
+                    aria-label="Back"
+                  >
+                    <ArrowLeft className="text-muted-foreground size-5 transition group-hover:scale-110" />
                   </Button>
 
                   <div className="relative w-full">
                     <input
                       onChange={onChange}
                       value={value}
-                      className="h-9 w-full rounded-xl border border-neutral-950/10 bg-transparent p-2 text-base text-neutral-900 placeholder-neutral-500 placeholder:text-base focus:outline-none"
+                      className="border-muted text-muted-foreground placeholder-muted-foreground h-9 w-full rounded-lg bg-transparent p-2 text-base placeholder:text-base focus:outline-none"
                       placeholder="Search text"
                       autoFocus
                     />
