@@ -1,5 +1,5 @@
-@config "../../tailwind.config.ts";
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 @variant dark (&:where(.dark, .dark *));
 
@@ -211,7 +211,7 @@
   }
 
   html {
-    @apply antialiased;
+    @apply scheme-light dark:scheme-dark antialiased;
   }
 
   body {

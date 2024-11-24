@@ -73,7 +73,7 @@ export const ToolbarDynamic = ({
                     <input
                       onChange={onChange}
                       value={value}
-                      className="border-muted text-muted-foreground placeholder-muted-foreground h-9 w-full rounded-lg bg-transparent p-2 text-base placeholder:text-base focus:outline-none"
+                      className="border-muted text-muted-foreground placeholder-muted-foreground focus:outline-hidden h-9 w-full rounded-lg bg-transparent p-2 text-base placeholder:text-base"
                       placeholder="Search text"
                       autoFocus
                     />
