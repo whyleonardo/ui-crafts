@@ -1,6 +1,6 @@
 "use client"
 
-import { type ChangeEvent, useRef, useState } from "react"
+import { type ChangeEvent, type RefObject, useRef, useState } from "react"
 
 import { Button } from "@/components/ui/button"
 
@@ -29,7 +29,7 @@ export const ToolbarDynamic = ({
   const [isOpen, setIsOpen] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
 
-  useClickOutside(containerRef, () => {
+  useClickOutside(containerRef as RefObject<HTMLDivElement>, () => {
     setIsOpen(false)
     resetValue()
   })
@@ -73,11 +73,11 @@ export const ToolbarDynamic = ({
                     <input
                       onChange={onChange}
                       value={value}
-                      className="border-muted text-muted-foreground placeholder-muted-foreground focus:outline-hidden h-9 w-full rounded-lg bg-transparent p-2 text-base placeholder:text-base"
+                      className="border-muted text-muted-foreground placeholder-muted-foreground h-9 w-full rounded-lg bg-transparent p-2 text-base placeholder:text-base focus:outline-hidden"
                       placeholder="Search text"
                       autoFocus
                     />
-                    <div className="absolute right-1 top-0 flex h-full items-center justify-center" />
+                    <div className="absolute top-0 right-1 flex h-full items-center justify-center" />
                   </div>
                 </motion.div>
               )}
