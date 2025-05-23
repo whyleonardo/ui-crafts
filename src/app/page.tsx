@@ -1,3 +1,5 @@
+import { ActionToolbar } from "@/components/crafts/action-toolbar"
+import { ClipText } from "@/components/crafts/clip-text"
 import { DraggableWidget } from "@/components/crafts/draggable-widget"
 import { MagneticTabs } from "@/components/crafts/magnetic-tabs"
 import { ThemeToggle } from "@/components/theme-toggle"
@@ -13,6 +15,10 @@ export default function IndexPage() {
       </header>
 
       <main className="mx-auto flex w-full max-w-xl flex-col items-center gap-8 text-xl">
+        <ActionToolbar />
+
+        <ClipText />
+
         <DraggableWidget />
 
         <MagneticTabs />

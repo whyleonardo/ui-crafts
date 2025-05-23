@@ -20,7 +20,7 @@ export const ComponentContainer = forwardRef<
       <div
         ref={ref}
         className={cn(
-          "inset-shadow-sm inset-shadow-foreground/5 flex h-full items-center justify-center rounded-3xl border bg-neutral-100 p-5 dark:bg-neutral-900",
+          "inset-shadow-foreground/5 flex h-full items-center justify-center overflow-hidden rounded-3xl border bg-neutral-100 p-5 inset-shadow-sm dark:bg-neutral-900",
           className
         )}
       >
