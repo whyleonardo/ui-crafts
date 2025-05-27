@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "whyleonardo",
+  "homepage": "https://ui-crafts-coral.vercel.app/",
+  "items": [
+    {
+      "name": "sign-in-button",
+      "type": "registry:component",
+      "title": "Sign In Button",
+      "registryDependencies": ["button"],
+      "dependencies": ["lucide-react"],
+      "tailwind": {
+        "config": {}
+      },
+      "files": [
+        {
+          "type": "registry:component",
+          "path": "registry/buttons/sign-in-button.tsx"
+        }
+      ]
+    }
+  ]
+}

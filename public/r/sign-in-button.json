@@ -1,0 +1,37 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "sign-in-button",
+  "type": "registry:component",
+  "title": "Sign In Button",
+  "dependencies": [
+    "lucide-react",
+    "clsx",
+    "tailwind-merge",
+    "@radix-ui/react-slot",
+    "class-variance-authority",
+    "lucide-react"
+  ],
+  "registryDependencies": ["button"],
+  "files": [
+    {
+      "path": "registry/buttons/sign-in-button.tsx",
+      "content": "import type { ReactNode } from \"react\"\nimport type React from \"react\"\n\nimport { Button, type ButtonProps } from \"@/components/ui/button\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { CheckIcon, Loader2 } from \"lucide-react\"\n\ninterface RootProps extends ButtonProps {\n  children: ReactNode\n  className?: string\n  isSuccess?: boolean\n}\n\ninterface SignInButtonIconProps {\n  className?: string\n  icon: React.FC<React.SVGProps<SVGSVGElement>>\n}\n\nconst SignInButton = ({\n  onClick,\n  className,\n  disabled,\n  isSuccess,\n  ...props\n}: RootProps) => {\n  return (\n    <Button\n      data-success={isSuccess}\n      data-loading={disabled}\n      onClick={onClick}\n      className={cn(\"group overflow-hidden\", className)}\n      disabled={disabled}\n      {...props}\n    />\n  )\n}\n\nconst SignInIcon = ({ icon: Icon, className }: SignInButtonIconProps) => {\n  return (\n    <div className=\"relative me-4\">\n      <Icon\n        aria-hidden={true}\n        className={cn(\n          \"transition-transform group-data-[loading=true]:-translate-y-8\",\n          \"group-data-[success=true]:-translate-y-8\",\n\n          className\n        )}\n      />\n\n      <CheckIcon className=\"text-success absolute top-0 left-0 size-4 scale-0 transition-transform duration-300 group-data-[success=true]:scale-100\" />\n\n      <div\n        className={cn(\n          \"absolute top-0 left-0 translate-y-8 transition-transform\",\n          \"group-data-[loading=true]:translate-y-0 group-data-[success=true]:opacity-0\"\n        )}\n      >\n        <Loader2 className=\"size-4 animate-spin\" />\n      </div>\n    </div>\n  )\n}\n\nexport { SignInButton, SignInIcon }\n",
+      "type": "registry:component"
+    },
+    {
+      "path": "src/components/ui/button.tsx",
+      "content": "import * as React from \"react\"\n\nimport { cn } from \"@/lib/utils\"\n\nimport { Slot, Slottable } from \"@radix-ui/react-slot\"\n\nimport { type VariantProps, cva } from \"class-variance-authority\"\n\nconst buttonVariants = cva(\n  \"inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium text-sm transition-colors disabled:pointer-events-none disabled:opacity-50 focus-visible:outline-hidden focus-visible:ring-1 focus-visible:ring-ring\",\n  {\n    variants: {\n      variant: {\n        default:\n          \"bg-primary text-primary-foreground shadow hover:bg-primary/90\",\n        destructive:\n          \"bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90\",\n        outline:\n          \"border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground\",\n        secondary:\n          \"bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80\",\n        ghost: \"hover:bg-accent hover:text-accent-foreground\",\n        link: \"text-primary underline-offset-4 hover:underline\",\n        withIcon: \"relative group bg-primary text-primary-foreground\",\n        ringHover:\n          \"bg-primary hover:bg-primary/90 transition-all text-primary-foreground hover:ring-2 hover:ring-offset-2 hover:ring-offset-background hover:ring-primary duration-300\",\n        linkHover:\n          \"relative after:absolute after:bg-primary after:bottom-2 after:h-[1px] after:w-7/12 after:origin-bottom-right after:scale-x-0 hover:after:origin-bottom-left hover:after:scale-x-100 after:transition-transform after:ease-in-out after:duration-300\",\n        unset: \"cursor-pointer\"\n      },\n      size: {\n        default: \"h-9 px-4 py-2\",\n        sm: \"h-8 rounded-md px-3 text-xs\",\n        lg: \"h-10 rounded-md px-8\",\n        icon: \"size-8\"\n      }\n    },\n    defaultVariants: {\n      variant: \"default\",\n      size: \"default\"\n    }\n  }\n)\n\nexport interface ButtonProps\n  extends React.ButtonHTMLAttributes<HTMLButtonElement>,\n    VariantProps<typeof buttonVariants> {\n  asChild?: boolean\n}\n\ninterface IconProps {\n  Icon: React.ElementType\n  iconPlacement: \"left\" | \"right\"\n}\n\ninterface IconRefProps {\n  Icon?: never\n  iconPlacement?: undefined\n}\n\nexport type ButtonIconProps = IconProps | IconRefProps\n\nconst Button = React.forwardRef<\n  HTMLButtonElement,\n  ButtonProps & ButtonIconProps\n>(\n  (\n    {\n      className,\n      variant,\n      size,\n      Icon,\n      iconPlacement = \"left\",\n      children,\n      asChild = false,\n      ...props\n    },\n    ref\n  ) => {\n    const Comp = asChild ? Slot : \"button\"\n    return (\n      <Comp\n        className={cn(buttonVariants({ variant, size, className }))}\n        ref={ref}\n        {...props}\n      >\n        {Icon && iconPlacement === \"left\" && (\n          <div className=\"w-0 translate-x-[0%] pr-0 opacity-0 transition-all duration-200 group-hover:w-4 group-hover:-translate-x-1.5 group-hover:opacity-100\">\n            <Icon className=\"size-4\" />\n          </div>\n        )}\n        <Slottable>{children}</Slottable>\n        {Icon && iconPlacement === \"right\" && (\n          <div className=\"w-0 translate-x-[100%] pl-0 opacity-0 transition-all duration-200 group-hover:w-4 group-hover:translate-x-0 group-hover:pl-2 group-hover:opacity-100\">\n            <Icon className=\"size-4\" />\n          </div>\n        )}\n      </Comp>\n    )\n  }\n)\nButton.displayName = \"Button\"\n\nexport { Button, buttonVariants }\n",
+      "type": "registry:ui",
+      "target": ""
+    },
+    {
+      "path": "src/lib/utils.ts",
+      "content": "import { type ClassValue, clsx } from \"clsx\"\nimport { twMerge } from \"tailwind-merge\"\n\nexport function cn(...inputs: ClassValue[]) {\n  return twMerge(clsx(inputs))\n}\n",
+      "type": "registry:lib",
+      "target": ""
+    }
+  ],
+  "tailwind": {
+    "config": {}
+  }
+}
